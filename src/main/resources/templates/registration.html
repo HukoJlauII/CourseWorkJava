@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/styleregform.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="images/image-1.png" alt="" class="image-1">
+				<form action="/registration" th:object="${user}" method="post">
+					<h3>Sign up</h3>
+					<div th:if="${errorLenPassword}">
+						<div class="alert alert-danger">
+							Минимальная длина пароля составляет 8 знаков
+						</div>
+					</div>
+					<div th:if="${errorConfPassword}">
+						<div class="alert alert-danger">
+							Пароли не совпадают!
+						</div>
+					</div>
+					<div th:if="${errorAlreadyExistsUsername}">
+						<div class="alert alert-danger">
+							Пользователь с таким ником уже существует!
+						</div>
+					</div>
+					<div th:if="${errorAnomaly}">
+						<div class="alert alert-danger">
+							Аномальная ошибка
+						</div>
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" class="form-control" placeholder="Username" required="true" th:field="*{username}">
+					</div>
+<!--					<div class="form-holder">-->
+<!--						<span class="lnr lnr-phone-handset"></span>-->
+<!--						<input type="text" class="form-control" placeholder="Phone Number">-->
+<!--					</div>-->
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" class="form-control" placeholder="Mail" required="true" th:field="*{email}" >
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Password" required="true" th:field="*{password}">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Confirm Password" required="true" th:field="*{passwordConfirm}">
+					</div>
+					<button>
+						<span>Get started!</span>
+					</button>
+				</form>
+				<img src="images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/main.js"></script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

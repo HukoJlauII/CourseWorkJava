@@ -5,6 +5,7 @@ import main.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,10 +42,10 @@ public class UserService implements UserDetailsService {
         }
 
 
-        if (!StringUtils.isEmpty(user.getEmail())){
-            String message = "Здравствуй, "+user.getUsername()+"! Приветствуем в нашем магазине стройматериалов";
-            emailService.sendSimpleMessage(user.getEmail(), message);
-        }
+//        if (!StringUtils.isEmpty(user.getEmail())){
+//            String message = "Здравствуй, "+user.getUsername()+"! Приветствуем в нашем магазине стройматериалов";
+//            emailService.sendSimpleMessage(user.getEmail(), message);
+//        }
 
         return user;
     }
@@ -76,7 +77,16 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
         return true;
     }
+    @Transactional
+    public void resaveUser(User user){
+        userRepository.save(user);
+    }
 
+    @Transactional
+    public void resaveUserPassword(User user){
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
     @Transactional
     public boolean deleteUser(int userId){
         if (userRepository.findById(userId).isPresent()){
@@ -85,7 +95,11 @@ public class UserService implements UserDetailsService {
         }
         return false;
     }
-
+    @Transactional
+    public User getUserAuth()
+    {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
     @Transactional
     public List<User> usergtList(int idMin){
         return entityManager.createQuery("SELECT u from User u WHERE u.id > :paramId", User.class)

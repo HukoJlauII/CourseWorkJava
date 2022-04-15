@@ -18,7 +18,15 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(To);
         message.setText(text);
-        message.setSubject("Тестовое письмо");
+        message.setSubject("Приветственное письмо");
+        mailSender.send(message);
+    }
+    @Async
+    public void sendEditMessage(String To,String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(To);
+        message.setText(text);
+        message.setSubject("Уведомление об изменении информации об Аккаунте");
         mailSender.send(message);
     }
 }

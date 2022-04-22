@@ -32,7 +32,7 @@
 	<link href="css/styles.css" rel="stylesheet">
 	
 	<!-- Favicon  -->
-    <link rel="icon" href="images/favicon.png">
+    <link rel="icon" href="images/logo.ico">
 </head>
 <body>
     
@@ -73,13 +73,18 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="shopBasket" >
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button"
                            data-bs-toggle="dropdown" aria-expanded="true" sec:authentication="name">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/UserProfile">Личный кабинет</a></li>
-                            <li><a class="dropdown-item" href="/logout">Выйти</a></li>
+                            <li><a class="dropdown-item" href="/UserProfile">Your profile</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -96,7 +101,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="h1-large">Creative Social Media Digital Agency</h1>
-                        <a class="btn-solid-lg" href="#introduction">Discover</a>
+                        <a class="btn-solid-lg" href="#projects">Discover</a>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
@@ -264,7 +269,7 @@
 		<div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="h2-heading">Projects That We're Proud Of</h2>
+                    <h2 class="h2-heading">Our products</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -273,64 +278,184 @@
                     <!-- Filter -->
                     <div class="button-group filters-button-group">
                         <button class="button is-checked" data-filter="*">SHOW ALL</button>
-                        <button class="button" data-filter=".business">BUSINESS</button>
-                        <button class="button" data-filter=".finance">FINANCE</button>
-                        <button class="button" data-filter=".software">SOFTWARE</button>
+                        <button class="button" data-filter=".business">DECORATION</button>
+                        <button class="button" data-filter=".finance">WINDOWS</button>
+                        <button class="button" data-filter=".software">FLOOR</button>
                     </div> <!-- end of button group -->
                     <div class="grid">
-                        <div class="element-item finance">
+                        <div class="element-item business">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-1.jpg" alt="alternative">
-                                <p><strong>Online banking</strong> - delivered to and to major company in pharmace ski jump from</p>
+                                <img class="img-fluid" src="images/img_1.png" alt="alternative">
+                                <p><strong>Stone artificial Artens gray</strong>
+                                    - gypsum-based finishing material, intended for internal use.
+                                    Made from lightweight material</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                    <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(1)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>340 ₽</button></div>
+                            </div>
+                        </div>
+                        <div class="element-item business">
+                            <a href="desi-2/article.html">
+                                <img class="img-fluid" src="images/img_2.png" alt="alternative">
+                                <p><strong>Stone artificial White Hillsy</strong> - decorative stone, characterized by high strength, durability and moisture resistance</p>
+                            </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(2)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>1 790 ₽</button></div>
+                            </div>
+                        </div>
+                        <div class="element-item business">
+                            <a href="desi-2/article.html">
+                                <img class="img-fluid" src="images/img_3.png" alt="alternative">
+                                <p><strong>Facade tiles HAUBERK terracotta brick</strong> -
+                                    modern cladding material that is used to decorate facades</p>
+                            </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(3)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>1 368 ₽</button></div>
+                            </div>
                         </div>
                         <div class="element-item finance">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-2.jpg" alt="alternative">
-                                <p><strong>Loans company</strong> - enjoyed minutes related as at on on. Is fanny dried camping today</p>
+                                <img class="img-fluid" src="images/img_4.png" alt="alternative">
+                                <p><strong>Double plastic window</strong> - durable design for home or office.Advantages: durability and low price.</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(4)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>12 014 ₽</button></div>
+                            </div>
                         </div>
                         <div class="element-item finance">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-3.jpg" alt="alternative">
-                                <p><strong>Refinance firm</strong> - distrusts an it contented perceived attending oh nouns here</p>
+                                <img class="img-fluid" src="images/img_5.png" alt="alternative">
+                                <p><strong>Wooden window</strong> - it has a very aesthetic appearance, making the interior more comfortable</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(5)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>7 262 ₽</button></div>
+                            </div>
                         </div>
-                        <div class="element-item business finance">
+                        <div class="element-item finance">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-4.jpg" alt="alternative">
-                                <p><strong>Financial products</strong> - thoroughly estimating introduced stimulated why but front</p>
+                                <img class="img-fluid" src="images/img_6.png" alt="alternative">
+                                <p><strong>Aluminum balcony railing</strong> - for non-residential premises (such as garage, garden shed)</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(6)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>1 998 ₽</button></div>
+                            </div>
                         </div>
-                        <div class="element-item business finance">
+                        <div class="element-item software">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-5.jpg" alt="alternative">
-                                <p><strong>Credit cards</strong> - enjoyed minutes related as at on on. Is fanny dried out yesterday</p>
+                                <img class="img-fluid" src="images/img_7.png" alt="alternative">
+                                <p><strong>Laminate Artens "Oak Gravis"</strong> - designed for the installation of flooring in residential or commercial premises with high traffic</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(7)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>1 890 ₽</button></div>
+                            </div>
                         </div>
-                        <div class="element-item business software">
+                        <div class="element-item software">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-6.jpg" alt="alternative">
-                                <p><strong>Software robots</strong> - as often me goodness as reserved raptures to mistaken</p>
+                                <img class="img-fluid" src="images/img_8.png" alt="alternative">
+                                <p><strong>Linoleum "Honey Oak"</strong> - Speed and ease of installation, Easy maintenance, Moisture Resistance, Sound absorption</p>
                             </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(8)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>320 ₽</button></div>
+                            </div>
                         </div>
-                        <div class="element-item business software">
+                        <div class="element-item software">
                             <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-7.jpg" alt="alternative">
-                                <p><strong>Company control</strong> - steepest oh screened he gravity he mr sixteen esteems his</p>
+                                <img class="img-fluid" src="images/img_9.png" alt="alternative">
+                                <p><strong>Laminate Artens Mongolian Oak grey</strong> - designed for the installation of flooring in residential</p>
                             </a>
-                        </div>
-                        <div class="element-item business software">
-                            <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-8.jpg" alt="alternative">
-                                <p><strong>Audit reports</strong> - mile home its new way with high told said finished to learn</p>
-                            </a>
-                        </div>
-                        <div class="element-item business software">
-                            <a href="desi-2/article.html">
-                                <img class="img-fluid" src="images/project-9.jpg" alt="alternative">
-                                <p><strong>Big business</strong> - no horrible blessing landlord dwelling dissuade if we can hear</p>
-                            </a>
+                            <div class="d-flex justify-content-between align-items-center pb-5">
+                                <div class="">
+                                    <div class="product-links"  sec:authorize="!isAuthenticated()">
+                                        <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
+                                    </div>
+                                    <div class="product-links"  sec:authorize="isAuthenticated()">
+                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(9)}"></button>
+                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                    </div>
+                                </div>
+                                <div class=""><button  type="button" class="btn btn-success sm" disabled>2 029 ₽</button></div>
+                            </div>
                         </div>
                     </div> <!-- end of grid -->
                     <!-- end of filter -->
@@ -530,7 +655,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © <a href="#your-link">Your name</a></p>
+                    <p class="p-small">Copyright © <a href="#your-link">Glushko Nikita</a></p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
 

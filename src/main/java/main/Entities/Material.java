@@ -40,6 +40,14 @@ public class Material {
         this.materialNumber = materialNumber;
     }
 
+    public Material() {
+    }
+
+    public Material(User userID, int materialNumber) {
+        this.userID = userID;
+        this.materialNumber = materialNumber;
+    }
+
     public int getMaterialCount() {
         return materialCount;
     }
@@ -48,7 +56,7 @@ public class Material {
         this.materialCount = materialCount;
     }
     public String getPhotoAddress(){
-        return "images/"+String.valueOf(materialNumber) + ".png";
+        return "images/img_"+String.valueOf(materialNumber) + ".png";
     }
 
     public String getPriceForOneMaterial() {

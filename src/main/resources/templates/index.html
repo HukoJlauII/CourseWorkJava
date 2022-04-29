@@ -32,7 +32,7 @@
 	<link href="css/styles.css" rel="stylesheet">
 	
 	<!-- Favicon  -->
-    <link rel="icon" href="images/logo.ico">
+    <link rel="icon" href="images/favicon.png">
 </head>
 <body>
     
@@ -74,7 +74,7 @@
                         </ul>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <a class="nav-link" href="shopBasket" >
+                        <a class="nav-link" href="cart" >
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                     </li>
@@ -290,15 +290,15 @@
                                     - gypsum-based finishing material, intended for internal use.
                                     Made from lightweight material</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="1">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                     <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(1)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_1"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(1)}"></button>
+                                        <a href="add_material_1"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>340 ₽</button></div>
@@ -309,15 +309,15 @@
                                 <img class="img-fluid" src="images/img_2.png" alt="alternative">
                                 <p><strong>Stone artificial White Hillsy</strong> - decorative stone, characterized by high strength, durability and moisture resistance</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="2">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(2)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_2"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(2)}"></button>
+                                        <a href="add_material_2"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>1 790 ₽</button></div>
@@ -329,15 +329,15 @@
                                 <p><strong>Facade tiles HAUBERK terracotta brick</strong> -
                                     modern cladding material that is used to decorate facades</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="3">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(3)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_3"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(3)}"></button>
+                                        <a href="add_material_3"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>1 368 ₽</button></div>
@@ -348,15 +348,15 @@
                                 <img class="img-fluid" src="images/img_4.png" alt="alternative">
                                 <p><strong>Double plastic window</strong> - durable design for home or office.Advantages: durability and low price.</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="4">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(4)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_4"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(4)}"></button>
+                                        <a href="add_material_4"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>12 014 ₽</button></div>
@@ -367,15 +367,15 @@
                                 <img class="img-fluid" src="images/img_5.png" alt="alternative">
                                 <p><strong>Wooden window</strong> - it has a very aesthetic appearance, making the interior more comfortable</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="5">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(5)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_5"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(5)}"></button>
+                                        <a href="add_material_5"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>7 262 ₽</button></div>
@@ -386,15 +386,15 @@
                                 <img class="img-fluid" src="images/img_6.png" alt="alternative">
                                 <p><strong>Aluminum balcony railing</strong> - for non-residential premises (such as garage, garden shed)</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="6">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(6)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_6"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(6)}"></button>
+                                        <a href="add_material_6"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>1 998 ₽</button></div>
@@ -405,15 +405,15 @@
                                 <img class="img-fluid" src="images/img_7.png" alt="alternative">
                                 <p><strong>Laminate Artens "Oak Gravis"</strong> - designed for the installation of flooring in residential or commercial premises with high traffic</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="7">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(7)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_7"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(7)}"></button>
+                                        <a href="add_material_7"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>1 890 ₽</button></div>
@@ -424,15 +424,15 @@
                                 <img class="img-fluid" src="images/img_8.png" alt="alternative">
                                 <p><strong>Linoleum "Honey Oak"</strong> - Speed and ease of installation, Easy maintenance, Moisture Resistance, Sound absorption</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="8">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(8)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_8"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(8)}"></button>
+                                        <a href="add_material_8"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>320 ₽</button></div>
@@ -443,15 +443,15 @@
                                 <img class="img-fluid" src="images/img_9.png" alt="alternative">
                                 <p><strong>Laminate Artens Mongolian Oak grey</strong> - designed for the installation of flooring in residential</p>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center pb-5">
+                            <div class="d-flex justify-content-between align-items-center pb-5" name="9">
                                 <div class="">
                                     <div class="product-links"  sec:authorize="!isAuthenticated()">
                                         <button type="button" disabled class="btn btn-dark" th:text="Authorize"></button>
                                     </div>
                                     <div class="product-links"  sec:authorize="isAuthenticated()">
-                                        <a href="remove_material_1"><i class="fas fa-caret-left fa-lg"></i></a>
-                                        <button type="button" disabled class="btn btn-success" th:text="${#authentication.getPrincipal().getMaterialCount(9)}"></button>
-                                        <a href="add_material_1"><i class="fas fa-caret-right fa-lg" ></i></a>
+                                        <a href="remove_material_9"><i class="fa fa-minus fa-lg"></i></a>
+                                        <button type="button" disabled class="btn btn-dark" th:text="${#authentication.getPrincipal().getMaterialCount(9)}"></button>
+                                        <a href="add_material_9"><i class="fa fa-plus fa-lg" ></i></a>
                                     </div>
                                 </div>
                                 <div class=""><button  type="button" class="btn btn-success sm" disabled>2 029 ₽</button></div>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="UTF-8">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <title>Cart</title>
+    <style>
+        body {
+            background: rgb(99, 39, 120)
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark" aria-label="Main navigation">
+    <div class="container">
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="index"><img src="images/logo.svg" alt="alternative"></a>
+
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text" href="index.html">Desi</a> -->
+
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#header">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item dropdown " sec:authorize="!isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><i
+                            class="far fa-user"></i></a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                        <li>
+                            <div class="text-center">
+                                <a href="/login" class="btn btn-rounded mb-4 text-white">Log in</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text-center">
+                                <a href="/registration" class="btn btn-rounded mb-4 text-white">Sign up</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="true" sec:authentication="name">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/UserProfile">Your profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div> <!-- end of navbar-collapse -->
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->
+<div class="container rounded bg-white mt-5 mb-5" style="min-height: 80%">
+    <div th:if="${infoSetting}">
+        <div class="alert alert-success" th:text="${message}">
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center text-black" style="color: black">Item name</th>
+            <th class="text-center text-black" style="color: black">Price</th>
+            <th class="text-center text-black" style="color: black">Quantity</th>
+            <th class="text-center text-black" style="color: black">Photo</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="material : ${materials}">
+            <td class="text-center" style="color: black" th:text="${material.getItemName()}"></td>
+            <td class="text-center" style="color: black" th:text="${material.getPriceForOneMaterial()}"></td>
+            <td class="text-center" style="color: black" th:text="${material.getMaterialCount()}"></td>
+            <td class="d-none text-center d-md-block" style="color: black"><img class="img-thumbnail rounded"
+                                                                                style="width: 10em; height: 10em;"
+                                                                                th:src="${material.getPhotoAddress()}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-around">
+        <button class="btn btn-danger" type="button"><a
+                style="text-decoration: none; color: white;" href="clear">Clear cart</a>
+        </button>
+        <button class="btn btn-primary" type="button" th:if="${#authentication.getPrincipal().getOrderPrice()} != '0 руб.'"><a
+                style="text-decoration: none; color: white;" href="order">Order</a>
+        </button>
+    </div>
+</div>
+
+<div class="footer ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer-col first">
+                    <h6>About Desi</h6>
+                    <p class="p-small">He oppose at thrown desire of no. Announcing impression unaffected day his are
+                        unreserved indulgence. Him hard find read are you</p>
+                </div> <!-- end of footer-col -->
+                <div class="footer-col second">
+                    <h6>Links</h6>
+                    <ul class="list-unstyled li-space-lg p-small">
+                        <li>Important: <a href="desi-2/terms.html">Terms & Conditions</a>, <a
+                                href="desi-2/privacy.html">Privacy Policy</a></li>
+                        <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a
+                                href="#">Illustrations</a></li>
+                        <li>Menu: <a href="#header">Home</a>, <a href="#services">Services</a>, <a href="#projects">Projects</a>,
+                            <a href="#contact">Contact</a></li>
+                    </ul>
+                </div> <!-- end of footer-col -->
+                <div class="footer-col third">
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-pinterest-p fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x"></i>
+                            </a>
+                        </span>
+                    <p class="p-small">We would love to hear from you <a href="mailto:contact@site.com"><strong>contact@site.com</strong></a>
+                    </p>
+                </div> <!-- end of footer-col -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of footer -->
+<!-- end of footer -->
+<script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script type='text/Javascript'></script>
+</body>
+</html>

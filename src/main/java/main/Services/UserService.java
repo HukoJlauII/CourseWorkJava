@@ -41,11 +41,10 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
-
-//        if (!StringUtils.isEmpty(user.getEmail())){
-//            String message = "Здравствуй, "+user.getUsername()+"! Приветствуем в нашем магазине стройматериалов";
-//            emailService.sendSimpleMessage(user.getEmail(), message);
-//        }
+        if (!StringUtils.isEmpty(user.getEmail())){
+            String message = "Здравствуй, "+user.getUsername()+"! Приветствуем в нашем магазине стройматериалов";
+            emailService.sendSimpleMessage(user.getEmail(), message);
+        }
 
         return user;
     }

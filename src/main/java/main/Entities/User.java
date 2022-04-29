@@ -28,6 +28,14 @@ public class User implements UserDetails {
         return id;
     }
 
+    public Set<Material> getList() {
+        return list;
+    }
+
+    public void setList(Set<Material> list) {
+        this.list = list;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -126,11 +134,10 @@ public class User implements UserDetails {
         return null;
     }
 
-    public String getTotalCost(){
+    public String getOrderPrice(){
         int total = 0;
         for (Material item: this.list){
             String temp = item.getPriceForManyMaterials().replace(" руб.","");
-            System.out.println(temp);
             total += Integer.parseInt(temp);
         }
         return String.valueOf(total) + " руб.";

@@ -55,40 +55,42 @@ public class Material {
     public void setMaterialCount(int materialCount) {
         this.materialCount = materialCount;
     }
-    public String getPhotoAddress(){
-        return "images/img_"+String.valueOf(materialNumber) + ".png";
+
+    public String getPhotoAddress() {
+        return "images/img_" + materialNumber + ".png";
     }
 
     public String getPriceForOneMaterial() {
         return switch (this.materialNumber) {
-            case 1 -> String.valueOf(340) + " руб.";
-            case 2 -> String.valueOf(1790) + " руб.";
-            case 3 -> String.valueOf(1368) + " руб.";
-            case 4 -> String.valueOf(12014) + " руб.";
-            case 5 -> String.valueOf(7262) + " руб.";
-            case 6 -> String.valueOf(1998) + " руб.";
-            case 7 -> String.valueOf(1890) + " руб.";
-            case 8 -> String.valueOf(320) + " руб.";
-            case 9 -> String.valueOf(2029) + " руб.";
+            case 1 -> 340 + " руб.";
+            case 2 -> 1790 + " руб.";
+            case 3 -> 1368 + " руб.";
+            case 4 -> 12014 + " руб.";
+            case 5 -> 7262 + " руб.";
+            case 6 -> 1998 + " руб.";
+            case 7 -> 1890 + " руб.";
+            case 8 -> 320 + " руб.";
+            case 9 -> 2029 + " руб.";
             default -> "";
         };
     }
 
     public String getPriceForManyMaterials() {
         return switch (this.materialNumber) {
-            case 1 -> String.valueOf(340 * materialCount) + " руб.";
-            case 2 -> String.valueOf(1790 * materialCount) + " руб.";
-            case 3 -> String.valueOf(1368 * materialCount) + " руб.";
-            case 4 -> String.valueOf(12014 * materialCount) + " руб.";
-            case 5 -> String.valueOf(7262 * materialCount) + " руб.";
-            case 6 -> String.valueOf(1998 * materialCount) + " руб.";
-            case 7 -> String.valueOf(1890 * materialCount) + " руб.";
-            case 8 -> String.valueOf(320 * materialCount) + " руб.";
-            case 9 -> String.valueOf(2029 * materialCount) + " руб.";
+            case 1 -> 340 * materialCount + " руб.";
+            case 2 -> 1790 * materialCount + " руб.";
+            case 3 -> 1368 * materialCount + " руб.";
+            case 4 -> 12014 * materialCount + " руб.";
+            case 5 -> 7262 * materialCount + " руб.";
+            case 6 -> 1998 * materialCount + " руб.";
+            case 7 -> 1890 * materialCount + " руб.";
+            case 8 -> 320 * materialCount + " руб.";
+            case 9 -> 2029 * materialCount + " руб.";
             default -> "";
         };
     }
-    public String getItemName(){
+
+    public String getItemName() {
         return switch (this.materialNumber) {
             case 1 -> "Stone artificial Artens gray";
             case 2 -> "Stone artificial White Hillsy";

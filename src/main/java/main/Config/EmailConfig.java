@@ -12,8 +12,7 @@ import java.util.Properties;
 @EnableScheduling
 public class EmailConfig {
     @Bean
-    public JavaMailSender getEmailSender()
-    {
+    public JavaMailSender getEmailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);

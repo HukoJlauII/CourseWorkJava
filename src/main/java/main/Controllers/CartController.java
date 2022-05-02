@@ -39,8 +39,8 @@ public class CartController {
 
     @GetMapping("/order")
     public String GetOrder(Model model) {
-        model.addAttribute("infoSetting",true);
-        model.addAttribute("message","Order created successfully");
+        model.addAttribute("infoSetting", true);
+        model.addAttribute("message", "Order created successfully");
         User userAuth = userService.getUserAuth();
         String price = userAuth.getOrderPrice();
         emailService.sendOrderMessage(userAuth, userAuth.getList(), price);

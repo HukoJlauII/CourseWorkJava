@@ -20,6 +20,7 @@
             background: rgb(99, 39, 120)
         }
     </style>
+    <link rel="icon" href="images/favicon.png">
 </head>
 <body>
 <!-- Navigation -->
@@ -40,7 +41,7 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#header">Home</a>
+                    <a class="nav-link" aria-current="page" href="index">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#services">Services</a>
@@ -62,7 +63,7 @@
                     </ul>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="cart">
+                    <a class="nav-link active" href="cart">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>
@@ -87,44 +88,48 @@
     </div>
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <th class="text-center text-black" style="color: black">Item name</th>
-            <th class="text-center text-black" style="color: black">Price</th>
-            <th class="text-center text-black" style="color: black">Quantity</th>
-            <th class="text-center text-black" style="color: black">Photo</th>
+        <tr class="table-info">
+            <th class="text-center text-black align-middle" style="color: black">Item name</th>
+            <th class="text-center text-black align-middle" style="color: black">Price</th>
+            <th class="text-center text-black align-middle" style="color: black">Quantity</th>
+            <th class="text-center text-black align-middle" style="color: black">Photo</th>
         </tr>
 
         </thead>
         <tbody>
         <tr th:each="material : ${materials}">
-            <td class="text-center" style="color: black" th:text="${material.getItemName()}"></td>
-            <td class="text-center" style="color: black" th:text="${material.getPriceForOneMaterial()}"></td>
-            <td class="text-center" style="color: black" th:text="${material.getMaterialCount()}"></td>
-            <td class="d-none text-center d-md-block" style="color: black"><img class="img-thumbnail rounded"
+            <td class="text-center align-middle" style="color: black" th:text="${material.getItemName()}"></td>
+            <td class="text-center align-middle" style="color: black" th:text="${material.getPriceForOneMaterial()}"></td>
+            <td class="text-center align-middle" style="color: black" th:text="${material.getMaterialCount()}"></td>
+            <td class="d-none text-center align-middle d-md-block" style="color: black"><img class="img-thumbnail rounded"
                                                                                 style="width: 10em; height: 10em;"
                                                                                 th:src="${material.getPhotoAddress()}">
             </td>
         </tr>
         </tbody>
     </table>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around" th:if="${#authentication.getPrincipal().getOrderPrice()} == '0 руб.'">
+        <p class="testimonial-text mt-5">“Nothing to order now...”</p>
+    </div>
+    <div class="d-flex justify-content-around" th:if="${#authentication.getPrincipal().getOrderPrice()} != '0 руб.'">
         <button class="btn btn-danger" type="button"><a
                 style="text-decoration: none; color: white;" href="clear">Clear cart</a>
         </button>
-        <button class="btn btn-primary" type="button" th:if="${#authentication.getPrincipal().getOrderPrice()} != '0 руб.'"><a
+        <button class="btn btn-primary" type="button"
+        ><a
                 style="text-decoration: none; color: white;" href="order">Order</a>
         </button>
     </div>
 </div>
 
-<div class="footer ">
+<!-- Footer -->
+<div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer-col first">
-                    <h6>About Desi</h6>
-                    <p class="p-small">He oppose at thrown desire of no. Announcing impression unaffected day his are
-                        unreserved indulgence. Him hard find read are you</p>
+                    <h6>About BuildCity</h6>
+                    <p class="p-small">An advanced store in the field of building materials</p>
                 </div> <!-- end of footer-col -->
                 <div class="footer-col second">
                     <h6>Links</h6>
@@ -139,30 +144,30 @@
                 </div> <!-- end of footer-col -->
                 <div class="footer-col third">
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://stackoverflow.com">
                                 <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                                <i class="fab fa-stack-overflow fa-stack-1x"></i>
                             </a>
                         </span>
                     <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#https://github.com/HukoJlauII">
                                 <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-twitter fa-stack-1x"></i>
+                                <i class="fab fa-github fa-stack-1x"></i>
                             </a>
                         </span>
                     <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://steamcommunity.com/profiles/76561198970625976/">
                                 <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-pinterest-p fa-stack-1x"></i>
+                                <i class="fab fa-steam fa-stack-1x"></i>
                             </a>
                         </span>
                     <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="https://www.instagram.com">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
                         </span>
-                    <p class="p-small">We would love to hear from you <a href="mailto:contact@site.com"><strong>contact@site.com</strong></a>
+                    <p class="p-small">We would love to hear from you <a href="mailto:contact@site.com"><strong>polosatay_zebra@mail.ru</strong></a>
                     </p>
                 </div> <!-- end of footer-col -->
             </div> <!-- end of col -->
@@ -170,6 +175,19 @@
     </div> <!-- end of container -->
 </div> <!-- end of footer -->
 <!-- end of footer -->
+
+
+<!-- Copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="p-small">Copyright © <a href="#">Glushko Nikita</a></p>
+            </div> <!-- end of col -->
+        </div> <!-- enf of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of copyright -->
+<!-- end of copyright -->
 <script type='text/javascript'
         src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
 <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->

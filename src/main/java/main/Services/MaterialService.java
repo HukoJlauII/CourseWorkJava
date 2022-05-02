@@ -35,31 +35,20 @@ public class MaterialService {
     @Transactional
     public void minusCountMaterials(User user, int materialNumber) {
         Material material = user.getMaterial(materialNumber);
-        switch (user.getMaterialCount(materialNumber))
-        {
-            case 0 : return;
-            case 1 :
-            {
-                deleteMaterialfromUser(material,user);
+        switch (user.getMaterialCount(materialNumber)) {
+            case 0:
+                return;
+            case 1: {
+                deleteMaterialfromUser(material, user);
                 break;
             }
-            default:
-            {
+            default: {
                 material.setMaterialCount(material.getMaterialCount() - 1);
                 materialRepository.save(material);
             }
 
         }
-//        if (user.getMaterialCount(materialNumber) < 2) {
-//            if (user.getMaterialCount(materialNumber) == 0) {
-//                return;
-//            } else {
-//                deleteMaterialfromUser(material, user);
-//            }
-//        } else {
-//            material.setMaterialCount(material.getMaterialCount() - 1);
-//            materialRepository.save(material);
-//        }
+
 
     }
 
@@ -80,10 +69,6 @@ public class MaterialService {
         materialRepository.save(material);
     }
 
-//    @Transactional
-//    public Material findMaterialByUserAndTNumber(User user, int material_number){
-//        return materialRepository.findMaterialByUserIDAndMaterialNumber(user, material_number);
-//    }
 
     @Transactional
     public void deleteMaterial(Material material) {
@@ -98,29 +83,5 @@ public class MaterialService {
     @Transactional
     public List<Material> GetMaterials(Set<Material> materialSet) {
         return materialRepository.findAll();
-    }
-
-    @Transactional
-    public void changeCountMaterials(User user, int materialNumber, boolean plus) {
-        if (user.getMaterialCount(materialNumber) == 0) {
-            if (!plus) return;
-            Material material = new Material(user, materialNumber);
-            addMaterial(material, user);
-        } else {
-            Material material = user.getMaterial(materialNumber);
-            if (user.getMaterialCount(materialNumber) == 1 & !plus) {
-                deleteMaterialfromUser(material, user);
-            } else
-                changeCountOfMaterial(material, plus);
-        }
-    }
-
-    @Transactional
-    public void changeCountOfMaterial(Material material, boolean plus) {
-        if (plus) {
-            material.setMaterialCount(material.getMaterialCount() + 1);
-        } else
-            material.setMaterialCount(material.getMaterialCount() - 1);
-        materialRepository.save(material);
     }
 }

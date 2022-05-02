@@ -16,22 +16,18 @@ public class MaterialController {
     private UserService userService;
 
     @GetMapping("/add_material_{number}")
-    public String  addMaterialWithNumber(@PathVariable int number)
-    {
-        User userAuth=userService.getUserAuth();
-        materialService.plusCountMaterials(userAuth,number);
-//        materialService.changeCountMaterials(userAuth,number,true);
-        return "index";
-    }
-    @GetMapping("/remove_material_{number}")
-    public String  removeMaterialWithNumber(@PathVariable int number)
-    {
-        User userAuth=userService.getUserAuth();
-        materialService.minusCountMaterials(userAuth,number);
-//        materialService.changeCountMaterials(userAuth,number,false);
-        return "index";
+    public String addMaterialWithNumber(@PathVariable int number) {
+        User userAuth = userService.getUserAuth();
+        materialService.plusCountMaterials(userAuth, number);
+        return "redirect:/index#{number}";
     }
 
+    @GetMapping("/remove_material_{number}")
+    public String removeMaterialWithNumber(@PathVariable int number) {
+        User userAuth = userService.getUserAuth();
+        materialService.minusCountMaterials(userAuth, number);
+        return "redirect:/index#{number}";
+    }
 
 
 }

@@ -140,6 +140,6 @@ public class User implements UserDetails {
             String temp = item.getPriceForManyMaterials().replace(" руб.","");
             total += Integer.parseInt(temp);
         }
-        return String.valueOf(total) + " руб.";
+        return total + " руб.";
     }
 }

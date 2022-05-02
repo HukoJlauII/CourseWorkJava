@@ -18,28 +18,30 @@ public class EmailService {
     private JavaMailSender mailSender;
 
     @Async
-    public void sendSimpleMessage(String To,String text) {
+    public void sendSimpleMessage(String To, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(To);
         message.setText(text);
-        message.setSubject("Приветственное письмо");
+        message.setSubject("Welcome message!");
         mailSender.send(message);
     }
+
     @Async
-    public void sendEditMessage(String To,String text) {
+    public void sendEditMessage(String To, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(To);
         message.setText(text);
-        message.setSubject("Уведомление об изменении информации об Аккаунте");
+        message.setSubject("Notification about your account info");
         mailSender.send(message);
     }
+
     @Async
     public void sendOrderMessage(User user, Set<Material> materials, String price) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(user.getEmail());
-        StringBuilder messageText= new StringBuilder("Thank you for the order!\n");
+        StringBuilder messageText = new StringBuilder("Thank you for the order!\n");
 
-        for(Material material: materials){
+        for (Material material : materials) {
             messageText.append(material.getItemName()).append(" | ")
                     .append(material.getMaterialCount())
                     .append("x | ")
@@ -47,7 +49,16 @@ public class EmailService {
         }
         messageText.append("\nTotal price: ").append(price);
         message.setText(messageText.toString());
-        message.setSubject("Уведомление о создании заказа");
+        message.setSubject("Order creation");
+        mailSender.send(message);
+    }
+
+    @Async
+    public void sendFeedbackMessage(String to, String text, String name) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setText("Hello, " + name + "!\nYou send feedback message to our site:\n\"" + text + "\"\nOur feedback is very important for us!");
+        message.setSubject("Feedback message notification");
         mailSender.send(message);
     }
 }

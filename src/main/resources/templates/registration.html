@@ -5,7 +5,7 @@
 >
 	<head>
 		<meta charset="utf-8">
-		<title>RegistrationForm_v10 by Colorlib</title>
+		<title>Registration</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- LINEARICONS -->
@@ -22,24 +22,29 @@
 				<img src="images/image-1.png" alt="" class="image-1">
 				<form action="/registration" th:object="${user}" method="post">
 					<h3>Sign up</h3>
+					<div th:if="${errorLenUsername}">
+						<div class="alert alert-danger">
+							The minimum username length is 5 characters
+						</div>
+					</div>
 					<div th:if="${errorLenPassword}">
 						<div class="alert alert-danger">
-							Минимальная длина пароля составляет 8 знаков
+							The minimum password length is 8 characters
 						</div>
 					</div>
 					<div th:if="${errorConfPassword}">
 						<div class="alert alert-danger">
-							Пароли не совпадают!
+							Passwords don't match!
 						</div>
 					</div>
 					<div th:if="${errorAlreadyExistsUsername}">
 						<div class="alert alert-danger">
-							Пользователь с таким ником уже существует!
+							A user with this nickname already exists!
 						</div>
 					</div>
 					<div th:if="${errorAnomaly}">
 						<div class="alert alert-danger">
-							Аномальная ошибка
+							Abnormal error
 						</div>
 					</div>
 					<div class="form-holder">

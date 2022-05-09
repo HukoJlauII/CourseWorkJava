@@ -1,6 +1,5 @@
 package main.Controllers;
 
-import lombok.RequiredArgsConstructor;
 import main.Entities.User;
 import main.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import javax.validation.Valid;
 import java.util.Objects;
 
 @Controller
-@RequiredArgsConstructor
 public class RegistrationController {
     @Autowired
     private UserService userService;
@@ -29,7 +27,6 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String registrationUser(@ModelAttribute("user") @Valid User user,
                                    Model model) {
-        System.out.println(user);
         if (user.getUsername().length() < 5) {
             model.addAttribute("errorLenUsername", true);
             return "registration";

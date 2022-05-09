@@ -20,33 +20,33 @@ repositories {
 
 dependencies {
 
-//	THYMELEAF
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
-//	WEB
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'junit:junit:4.13.1'
 
 
-//	POSTGRES DRIVER
 	runtimeOnly 'org.postgresql:postgresql'
 
-//	FOR ENTITIES
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.hibernate:hibernate-core'
 	implementation 'javax.validation:validation-api'
 
-//	FOR UNIT TEST
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-//	FOR SECURITY
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.6.3'
+
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
-//	MAIL
+
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 

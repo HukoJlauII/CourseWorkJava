@@ -12,7 +12,7 @@ public class FeedbackController {
     @Autowired
     private EmailService emailService;
 
-    @PostMapping("/feedback")
+    @PostMapping("/index")
     public String sendFeedback(@RequestParam(name = "name") String name, @RequestParam(name = "email") String email, @RequestParam(name = "messageText") String messageText, Model model) {
         emailService.sendFeedbackMessage(email, messageText, name);
         model.addAttribute("infoSetting", true);

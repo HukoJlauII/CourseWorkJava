@@ -19,8 +19,6 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-    @PersistenceContext
-    private EntityManager entityManager;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -48,17 +46,6 @@ public class UserService implements UserDetailsService {
     @Transactional
     public User findUserByUsername(String username){
         return userRepository.findByUsername(username);
-    }
-
-    @Transactional
-    public User findUserById(int userId){
-        Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
-    }
-
-    @Transactional
-    public List<User> allUsers(){
-        return userRepository.findAll();
     }
 
     @Transactional
@@ -95,11 +82,5 @@ public class UserService implements UserDetailsService {
     {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
-    @Transactional
-    public List<User> usergtList(int idMin){
-        return entityManager.createQuery("SELECT u from User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
-    }
-
 
 }
